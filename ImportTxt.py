@@ -6,30 +6,44 @@ restString = '_1-I(r).txt'
 
 ncurves = 889
 npoints = 1000
-raw_data = np.zeros( [2*ncurves+1), npoints )
+raw_data = np.zeros((3,3))
 fname = 'Test.txt'
+
 def open_trace_files(fname):
 
-with open('Test.txt', 'r') as f:
-    content = f.readlines()
-    prefixes = ('#')
-    for word in content[:]:
-        if word.startswith(prefixes):
-            content.remove(word)
+    with open(fname, 'r') as f:
+        content = f.readlines()
+        prefixes = ('#')
+        for word in content[:]:
+            if word.startswith(prefixes):
+                content.remove(word)
 
-    content = ''.join(content)
-    content = content.split()
+        content = ''.join(content)
+        content = content.split()
 
-    localsize = int(float(len(content))/2)
-    localdatax = np.zeros(localsize)
-    localdatay = np.zeros(localsize)
+        localsize = int(float(len(content))/2)
+        localdatax = np.zeros(localsize)
+        localdatay = np.zeros(localsize)
 
-    for i in range(0,localsize):
-        localdatax[i] = float(content[2*i])
-        localdatay[i] = float(content[2*i+1])
+        for i in range(0,localsize):
+            localdatax[i] = float(content[2*i])
+            localdatay[i] = float(content[2*i+1])
 
-print(localdatax)
-#return localdatax, localdatay
+    #print(localdatax)
+    #print(localdatay)
+
+    return localdatax, localdatay
+
+data_local = open_trace_files(fname)
+raw_data[0] = data_local[0]
+raw_data[1] = data_local[1]
+
+
+print('\n',raw_data)
+
+print('\n This is the end of the function \n')
+
+print(raw_data[1])
 
 #for i in range (3,893):
 #    filename = fnameString + str(i) + restString
