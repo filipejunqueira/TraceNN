@@ -4,51 +4,34 @@ import numpy as np
 import matplotlib.pyplot as plt
 from numpy import array
 from numpy import random
+import ImportTxt.py
 
 
-#Create array that stores all the curves (goes from 3 to 891)
-#Therefore the number collums should be 0 to 2*890 (from 3 to 891 + 1 ),
-#Last collum is dedicated to the value (manipulation or not)
-#0 = y0, 1 = x0, 2 = y1, 3 = x1 ....
+fnameString = 'D:\PhD\Code\TraceNN\Data\default_2017Jul24-185510_STM-STM_AtomManipulation--'
+restString = '_1-I(r).txt'
 
 ncurves = 889
 npoints = 1000
+raw_data = np.zeros((ncurves,npoints))
 
-raw_data = np.zeros( (2*ncurves+1), npoints )
+for i in range(3,ncurves + 3):
+    fname = fnameString + str(i) + restString
+    data_local = open_trace_files(fname)
 
-#1st LOOP
-#Reads all the files and loads the array:
-#Reads each file one at a time.
+    raw_data[2*i,:] = data_local[0] #0 means x
+    raw_data[2*i+1] = data_local[1] #1 means y
 
-for j in range(0,ncurves)
-    #load all the files to variables x,y
-    for i in range(0,npoints):
-        raw_data[i,2*j]     =   y[i]
-        raw_data[i,2*j+1]   =   x[i]
-
-print(raw_data)
+print('\n',raw_data)
+print('\n This is the end \n')
 
 #2nd LOOP
 #NEW array
 #Copies all the valid (y,x) values (either manipulation or not)
 
-
-manipulation_value = np.zeros(npoints)
-
 #load .cvc to manipulation_value
-
-for i in range(0,npoints)
-    raw_data[i,2*ncurves+1] = manipulation_value[i]
-
 
 #3rd LOOP
 #Avarage all data into new array
-
-Average_data = np.zeros(2, npoints)
-
-for i in range(0,ncurves)
-    for j in range(0,points)
-        Average_data[i,j] = np.average(rawdata[i,j]) # indices not corret just yet
 
 
 #4th LOOP
@@ -57,5 +40,3 @@ for i in range(0,ncurves)
 #call FFT function from other file
 
 #PLOT THE TWO GRAPHS
-
-call plot the GRAPHS
