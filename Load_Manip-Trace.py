@@ -16,7 +16,6 @@ npoints = 1000
 
 raw_data = np.zeros( (2*ncurves+1), npoints )
 
-
 #1st LOOP
 #Reads all the files and loads the array:
 #Reads each file one at a time.
