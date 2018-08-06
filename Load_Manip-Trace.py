@@ -19,9 +19,8 @@ for i in range(3,ncurves + 3):
     print(str(len(data_local[0])) + ' File is ' +str(i))
     print(str(len(data_local[1])) + ' File is ' +str(i))
 
-
-    #raw_data[2*i] = data_local[0] #0 means x
-    #raw_data[2*i+1] = data_local[1] #1 means y
+    raw_data[2*i] = data_local[0] #0 means x
+    raw_data[2*i+1] = data_local[1] #1 means y
 
 #print('\n',raw_data)
 print('\n This is the end \n')

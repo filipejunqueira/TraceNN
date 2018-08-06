@@ -14,6 +14,18 @@ def open_trace_files(fname):
         content = ''.join(content)
         content = content.split()
 
+"""
+    #NEED TO INTERPOLATE DATA WHERE  THE VALUE IS NOT 1000
+        Flag = False
+        for Flag is False
+        if int(float(len(content))) < 1000:
+
+            content = content
+
+            else
+                Flag = True
+"""
+
         localsize = int(float(len(content))/2)
         localdatax = np.zeros(localsize)
         localdatay = np.zeros(localsize)
@@ -24,5 +36,8 @@ def open_trace_files(fname):
 
     #print(localdatax)
     #print(localdatay)
+
+
+
 
     return localdatax, localdatay
