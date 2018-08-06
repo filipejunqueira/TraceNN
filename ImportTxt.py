@@ -1,5 +1,6 @@
 import csv
 import numpy as np
+from scipy.interpolate import UnivariateSpline
 
 
 def open_trace_files(fname):
@@ -16,14 +17,13 @@ def open_trace_files(fname):
 
 """
     #NEED TO INTERPOLATE DATA WHERE  THE VALUE IS NOT 1000
-        Flag = False
-        for Flag is False
-        if int(float(len(content))) < 1000:
+        old_indices = np.arange(0,len(a))
+        new_length = 11
+        new_indices = np.linspace(0,len(a)-1,new_length)
+        spl = UnivariateSpline(old_indices,a,k=3,s=0)
+        new_array = spl(new_indices)
 
-            content = content
 
-            else
-                Flag = True
 """
 
         localsize = int(float(len(content))/2)
