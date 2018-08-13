@@ -3,11 +3,10 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 from numpy import array
-from ImportTxt import open_trace_files
 from scipy.interpolate import UnivariateSpline
 
 
-def open_trace_files(fname):
+def open_trace_files(fname,lenght):
 
     with open(fname, 'r') as f:
         content = f.readlines()
@@ -30,13 +29,15 @@ def open_trace_files(fname):
         localsize = int(float(len(content))/2)
         localdatax = np.zeros(localsize)
         localdatay = np.zeros(localsize)
+        new_localdatax = np.zeros(lenght)
+        new_localdatay = np.zeros(lenght)
 
         for i in range(0,localsize):
             localdatax[i] = float(content[2*i])
             localdatay[i] = float(content[2*i+1])
 
-    print(localdatax)
-    print(localdatay)
+    #print(localdatax)
+    #print(localdatay)
 
 
     return localdatax, localdatay
@@ -47,7 +48,7 @@ raw_data = np.zeros((2*ncurves,npoints))
 
 fname = 'Test.txt'
 
-data_local = open_trace_files(fname)
+data_local = open_trace_files(fname,1000)
 print(str(len(data_local[0])) + ' is the file size\n\n')
 print(str(len(data_local[1])) + ' is the file size\n\n')
 

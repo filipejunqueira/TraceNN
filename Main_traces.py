@@ -7,8 +7,6 @@ import ImportTxt
 
 
 
-
-
 #fnameString = 'D:\PhD\Code\TraceNN\Data\default_2017Jul24-185510_STM-STM_AtomManipulation--'
 #restString = '_1-I(r).txt'
 #for i in range (3,893):

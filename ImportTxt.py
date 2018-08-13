@@ -3,7 +3,7 @@ import numpy as np
 from scipy.interpolate import UnivariateSpline
 
 
-def open_trace_files(fname):
+def open_trace_files(fname,new_lenght):
 
     with open(fname, 'r') as f:
         content = f.readlines()
@@ -19,9 +19,28 @@ def open_trace_files(fname):
         localdatax = np.zeros(localsize)
         localdatay = np.zeros(localsize)
 
+        print(localsize)
+
+        #Now im going to resize the value of localdatax if localsize is not new_lenght
+        if localsize != new_lenght
+
+            x_aux = np.range()
+            new_localdatax = np.zeros(new_length)
+            new_localdatay = np.zeros(new_length)
+
+            sply = UnivariateSpline(localdatax, localdatay)
+            splx = UnivariateSpline(localdatax, localdatax)
+
+            new_localdatay = splx()
+
+
+
+
+
         for i in range(0,localsize):
             localdatax[i] = float(content[2*i])
             localdatay[i] = float(content[2*i+1])
+
 
     print(localdatax)
     print(localdatay)
