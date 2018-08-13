@@ -6,15 +6,16 @@ from numpy import array
 from numpy import random
 from ImportTxt import open_trace_files
 
-fnameString = 'D:\PhD\Code\TraceNN\Data\default_2017Jul24-185510_STM-STM_AtomManipulation--'
+fnameString = 'C:\\Users\\filip\\Documents\\Projects\\TraceNN\\Data\\default_2017Jul24-185510_STM-STM_AtomManipulation--'
 restString = '_1-I(r).txt'
 
 ncurves = 889
 npoints = 1000
-raw_data = np.zeros((ncurves,npoints))
+raw_data = np.zeros((2*ncurves,npoints))
 
 for i in range(3,ncurves + 3):
     fname = fnameString + str(i) + restString
+    print(fname)
     data_local = open_trace_files(fname)
     print(str(len(data_local[0])) + ' File is ' +str(i))
     print(str(len(data_local[1])) + ' File is ' +str(i))
@@ -22,7 +23,6 @@ for i in range(3,ncurves + 3):
     raw_data[2*i] = data_local[0] #0 means x
     raw_data[2*i+1] = data_local[1] #1 means y
 
-#print('\n',raw_data)
 print('\n This is the end \n')
 
 #2nd LOOP

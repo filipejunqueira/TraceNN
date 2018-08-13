@@ -3,7 +3,65 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 from numpy import array
+from ImportTxt import open_trace_files
+from scipy.interpolate import UnivariateSpline
 
+
+def open_trace_files(fname):
+
+    with open(fname, 'r') as f:
+        content = f.readlines()
+        prefixes = ('#')
+        for word in content[:]:
+            if word.startswith(prefixes):
+                content.remove(word)
+
+        content = ''.join(content)
+        content = content.split()
+        '''
+        #NEED TO INTERPOLATE DATA WHERE THE VALUE IS NOT 1000
+
+            old_indices = np.arange(0,len(a))
+            new_length = 1000
+            new_indices = np.linspace(0,len(a)-1,new_length)
+            spl = UnivariateSpline(old_indices,a,k=3,s=0)
+            new_array = spl(new_indices)
+        '''
+        localsize = int(float(len(content))/2)
+        localdatax = np.zeros(localsize)
+        localdatay = np.zeros(localsize)
+
+        for i in range(0,localsize):
+            localdatax[i] = float(content[2*i])
+            localdatay[i] = float(content[2*i+1])
+
+    print(localdatax)
+    print(localdatay)
+
+
+    return localdatax, localdatay
+
+ncurves = 1
+npoints = 100
+raw_data = np.zeros((2*ncurves,npoints))
+
+fname = 'Test.txt'
+
+data_local = open_trace_files(fname)
+print(str(len(data_local[0])) + ' is the file size\n\n')
+print(str(len(data_local[1])) + ' is the file size\n\n')
+
+raw_data[0] = data_local[0] #0 means x
+raw_data[1] = data_local[1] #1 means y
+
+print(raw_data)
+print(len(raw_data))
+
+print('\n This is the end \n')
+
+
+
+'''
 seed = 14
 #np.random.seed(seed)
 Nsignal = 1000
@@ -30,6 +88,9 @@ for x in range(0,Nsignal):
     for i in range(0,tsize):
         bigdata[i,x] = s[i]
 
+'''
+
+'''
 
 #plotting
 
@@ -53,3 +114,5 @@ plt.tight_layout()
 
 plt.savefig('FFTExample.png',bbox_inches='tight', dpi=500, transparent=True)
 plt.show()
+
+'''
