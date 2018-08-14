@@ -18,7 +18,7 @@ raw_data.clear
 
 for i in range(3,ncurves + 3):
     fname = fnameString + str(i) + restString
-    print('Adding ' + fname)
+    print('Adding ' + fname +'to position ' + str(i-3))
 
     data_local = open_trace_files(fname,npoints)
 
@@ -30,9 +30,8 @@ for i in range(3,ncurves + 3):
 
 
 print('\n ######################################################################################################## \n')
-print(len(raw_data))
-print(raw_data[1])
-print('\n\nThis is the end \n')
+
+print('\n\n                                           This is the end \n')
 
 #2nd LOOP
 #NEW array
