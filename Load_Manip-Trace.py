@@ -16,7 +16,9 @@ raw_data = np.zeros((2*ncurves,npoints))
 for i in range(3,ncurves + 3):
     fname = fnameString + str(i) + restString
     print(fname)
-    data_local = open_trace_files(fname)
+
+    data_local = open_trace_files(fname,npoints)
+
     print(str(len(data_local[0])) + ' File is ' +str(i))
     print(str(len(data_local[1])) + ' File is ' +str(i))
 
