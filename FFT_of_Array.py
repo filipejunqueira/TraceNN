@@ -5,11 +5,11 @@ import matplotlib.pyplot as plt
 from numpy import array
 from numpy import random
 
-N = 268432
+N = 100000
 
 #Generating a Synthetic Signal
 # linspace creates a lineared spaced vector (goes from 0 to 2pi in 1000 points)
-t = np.linspace(0,2*2*np.pi, N, endpoint=True)
+t = np.linspace(0,20*2*np.pi, N, endpoint=True)
 A = 1000 # Amplitude in Unit
 fo = 3
 #s is now a vector of 1000 points since t has 1000 points
