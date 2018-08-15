@@ -5,33 +5,18 @@ import matplotlib.pyplot as plt
 from numpy import array
 from numpy import random
 
-seed = 14
-np.random.seed(seed)
-Nsignal = 1000
-tsize = 1000
+N = 1000000
 
 #Generating a Synthetic Signal
 # linspace creates a lineared spaced vector (goes from 0 to 2pi in 1000 points)
-t = np.linspace(0, 2*np.pi, tsize, endpoint=True)
+t = np.linspace(0, 2*np.pi, N, endpoint=True)
 A = 100.0 # Amplitude in Unit
-fo = 1
+fo = 88
 #s is now a vector of 1000 points since t has 1000 points
 
-print(len(t))
-
-bigdata = np.zeros((tsize,Nsignal))
-print(bigdata)
-
-
-for x in range(0,Nsignal):
-    wrandom = 2*np.pi*fo*np.random.uniform(0,1)
-    theta_random = np.random.uniform(0,2*np.pi)
-    Arandom = A*np.random.uniform(0,1)
-    s = Arandom*np.sin(wrandom*t + theta_random) # Signal
-
-    for i in range(0,tsize):
-        bigdata[i,x] = s[i]
-
+#bigdata = np.zeros((tsize,Nsignal))
+#print(bigdata)
+s = np.sin(t*2*np.pi*fo)
 
 plt.plot(t,s)
 plt.xlabel('Time ($s$)')
@@ -74,6 +59,7 @@ plt.ylabel('Amplitude ($Unit$)')
 plt.subplot(122)
 plt.plot(X, 2.0*np.abs(Yhann[:N])/N)
 plt.title('Frequency Domain Signal')
+plt.xlim(0,120)
 plt.xlabel('Frequency ($Hz$)')
 plt.ylabel('Amplitude ($Unit$)')
 

@@ -3,6 +3,7 @@ import pandas as pd
 import numpy as np
 from ImportTxt import open_trace_files
 
+
 fnameString = 'C:\\Users\\filip\\Documents\\Projects\\TraceNN\\Data\\default_2017Jul24-185510_STM-STM_AtomManipulation--'
 restString = '_1-I(r).txt'
 

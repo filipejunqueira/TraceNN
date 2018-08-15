@@ -21,8 +21,7 @@ plt.show()
 ################  Fucking-Chuck-Norris-Fast-FFT   #############################
 #Now we are going to create a Fourier Transform (of variable
 Y = np.fft.fft(s)
-N = len(Y)/2 + 1
-N = int(N)
+N = int(len(Y)/2 + 1)
 
 #Now we need to adjust the frequency and the Amplitude axis
 #Stating with the Frequency Axix (x-Axis)
