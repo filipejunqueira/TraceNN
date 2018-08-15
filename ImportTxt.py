@@ -1,6 +1,5 @@
 import csv
 import numpy as np
-from scipy.interpolate import UnivariateSpline
 
 
 def open_trace_files(fname,new_length):
