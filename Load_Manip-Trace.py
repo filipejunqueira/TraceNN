@@ -1,9 +1,6 @@
 import csv
 import pandas as pd
 import numpy as np
-import matplotlib.pyplot as plt
-from numpy import array
-from numpy import random
 from ImportTxt import open_trace_files
 
 fnameString = 'C:\\Users\\filip\\Documents\\Projects\\TraceNN\\Data\\default_2017Jul24-185510_STM-STM_AtomManipulation--'
@@ -45,20 +42,3 @@ print('Added ' + str(len(classification)) + ' classification curves added')
 print('\n######################################################################################################## \n')
 
 print('\n                                           Files sucessfuly imported \n')
-
-#2nd LOOP
-#NEW array
-#Copies all the valid (y,x) values (either manipulation or not)
-
-#load .cvc to manipulation_value
-
-#3rd LOOP
-#Avarage all data into new array
-
-
-#4th LOOP
-#FFT of the avaraged array with manipulation, and with non manipulation
-
-#call FFT function from other file
-
-#PLOT THE TWO GRAPHS
