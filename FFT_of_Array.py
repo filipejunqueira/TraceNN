@@ -5,7 +5,8 @@ import matplotlib.pyplot as plt
 from numpy import array
 from numpy import random
 
-N = 1024
+N = 268432
+
 #Generating a Synthetic Signal
 # linspace creates a lineared spaced vector (goes from 0 to 2pi in 1000 points)
 t = np.linspace(0,2*2*np.pi, N, endpoint=True)
@@ -40,7 +41,7 @@ X = np.linspace(0, fa/2, fft_size, endpoint=True)
 # We need a window function to get a periodic signal from real data
 # you could use np.hanning, np.hamming or np.blackman for instance
 
-hann = np.hamming(len(s))
+hann = np.hanning(len(s))
 Yhann = np.fft.fft(hann*s)
 
 
