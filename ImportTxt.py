@@ -3,7 +3,6 @@ import numpy as np
 
 #This function adds collums of the Txt to two variables called localdatax and localdatay which are returned
 
-
 def open_trace_files(fname,new_length):
 
     with open(fname, 'r') as f:
