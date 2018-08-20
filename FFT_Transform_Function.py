@@ -2,6 +2,7 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 from Load_Manip_Trace import raw_data, classification
+import os
 
 
 
@@ -54,46 +55,54 @@ fft_data2.clear()
 
 
 for i in range(0,len(classification)):
-
+    if i%5==0:
+        print("%d%%" %(100*i/len(classification)), end="\r", flush=True)
     if classification[i][1] == 0:
         x,y = fft_trace(raw_data[2*i],raw_data[2*i+1])
         fft_data0.append(classification[i][0])
         fft_data0.append(x)
         fft_data0.append(y)
-
     if classification[i][1] == 1:
         x,y = fft_trace(raw_data[2*i],raw_data[2*i+1])
         fft_data0.append(classification[i][0])
         fft_data1.append(x)
         fft_data1.append(y)
-
     if classification[i][1] == 2:
         x,y = fft_trace(raw_data[2*i],raw_data[2*i+1])
         fft_data0.append(classification[i][0])
         fft_data2.append(x)
         fft_data2.append(y)
 
+#Creating figures
 
-print(fft_data0)
-
-'''
     plt.figure(figsize=(7,3))
     plt.subplot(121)
-    plt.plot(x,y)
+    plt.plot(raw_data[2*i],raw_data[2*i+1])
     plt.title('Manipulation Curve')
     #plt.ylim(np.min(s)*3, np.max(s)*3)
     plt.xlabel('Distance ($nm$)')
     plt.ylabel('I-Amplitude ($nA$)')
 
     plt.subplot(122)
-    plt.plot(fft_data[2*i],fft_data[2*i+2])
+    plt.plot(x,y)
     plt.title('FFT')
     plt.xlabel('Frequency ($Hz$)')
     plt.ylabel('Amplitude ($Unit$)')
+    plt.ylim(-max(y)/120,max(y)/12)
+    plt.xlim(max(x)/50,max(x))
+
+# Save figures of FFT In folder
 
     plt.tight_layout()
     plt.savefig('C:\\Users\\filip\\Documents\\Projects\\TraceNN\\Output_Data\\FFT\\FFT'+str(i+3) + '.png',bbox_inches='tight', dpi=150, transparent=True)
-'''
+    plt.close()
+
+###### Histogram #####
+
+
+
+
+
 
 print('\n########################################################################################################')
 
