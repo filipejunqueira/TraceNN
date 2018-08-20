@@ -13,7 +13,7 @@ npoints = 1000
 
 
 raw_data = []
-raw_data.clear
+raw_data.clear()
 
 print('\n\n########################################################################################################')
 
@@ -45,4 +45,4 @@ print('Added ' + str(len(classification)) + ' classification curves added')
 
 print('\n######################################################################################################## \n')
 
-print('\n                                           Files sucessfuly imported \n')
+print('\n           Files sucessfuly imported \n')
