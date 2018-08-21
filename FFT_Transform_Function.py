@@ -84,7 +84,7 @@ for i in range(0,N):
 
     if CurveTest == 'y':
         if i%1==0:
-            print("%d%%" %(100*i/len(classification)) + ' || Picture ' + str(i) + ' created' , end="\r", flush=True)
+            print('Progress: '+"%d%%" %(100*i/len(classification)) + ' || Picture ' + str(i) + ' created' , end="\r", flush=True)
         if i == len(classification)-1:
             print('100% all '+ str(len(classification)) + ' Pictures were created')
 
