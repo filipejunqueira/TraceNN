@@ -3,8 +3,7 @@ import pandas as pd
 import numpy as np
 from ImportTxt import open_trace_files
 
-fnameString = 'C:\\Users\\filip\\Documents\\Projects\\TraceNN\\Data\\default_2017Jul24-185510_STM-STM_AtomManipulation--'
-#fnameString = 'D:\\PhD\\Code\\TraceNN\\Data\\default_2017Jul24-185510_STM-STM_AtomManipulation--'
+fnameString = 'Data\\default_2017Jul24-185510_STM-STM_AtomManipulation--'
 
 restString = '_1-I(r).txt'
 
@@ -36,13 +35,13 @@ print('\nAdded ' + str(int(len(raw_data)/2)) + ' curves (x,y) to the main variab
 #classification_dataframe is a variable of type data_frame (Panda variable)
 #we transform that into a list because its easier to work with I think...
 
-classification_dataframe = pd.read_csv('C:\\Users\\filip\\Documents\\Projects\\TraceNN\\Data\\Classification.csv', header =None)
+classification_dataframe = pd.read_csv('Data\\Classification.csv', header =None)
 #classification_dataframe = pd.read_csv('D:\\PhD\\Code\\TraceNN\\Data\\Classification.csv', header =None)
 
 classification = classification_dataframe.values.tolist()
 
 print('Added ' + str(len(classification)) + ' classification curves added')
 
-print('\n######################################################################################################## \n')
+print('\nFiles sucessfuly imported \n')
 
-print('\n           Files sucessfuly imported \n')
+print('\n######################################################################################################## \n')
