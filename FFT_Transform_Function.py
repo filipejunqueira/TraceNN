@@ -120,20 +120,28 @@ print('FFT sucessfuly calculated')
 
 print('\n######################################################################################################## \n')
 
+
+size_data0 = len(fft_data0)
+size_data1 = len(fft_data1)
+size_data2 = len(fft_data2)
+
+
+print(str(len(fft_data0)//3) + ' with classification 0 (no manipulation event)')
+print(str(len(fft_data1)//3) + ' with classification 1 (manipulation event detected)')
+print(str(len(fft_data2)//3) + ' with classification 2 (Curve not classified)')
+
+for i in range(size_data0//3):
+    print(len(fft_data0[3*i+1]))
+
+print('\n\n ------------------------------------------------------------------------------')
+
+for i in range(size_data1):
+        print(len(fft_data1[3*i+1]))
+
+
+
 ###### Histogram #####
 
-size_data0 = fft_data0.amount()
-size_data1 = fft_data1.amount()
-size_data2 = fft_data2.amount()
-
-
-print(str(int(len(fft_data0)/3)) + ' with classification 0 (no manipulation event)')
-print(str(int(len(fft_data1)/3)) + ' with classification 1 (manipulation event detected)')
-print(str(int(len(fft_data2)/3)) + ' with classification 2 (Curve not classified)')
-
-print('\n')
-
-
-
-for i in range():
-    print(fft_data0[3*i])
+# To do a histogram I need to sum all the Ys together and divide by the number of
+# if they all have the same size it should be easy
+# Could do it normalized and non normalized
