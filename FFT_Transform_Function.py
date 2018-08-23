@@ -2,7 +2,7 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 from Load_Manip_Trace import raw_data, classification
-from Histrogram_Function import downsample
+from Downsample import downsample
 from sklearn.preprocessing import MinMaxScaler
 import os
 
@@ -135,12 +135,15 @@ size_data2 = len(fft_data2)
 # DAQUI PRA BAIXO EU NAO TENHO CERTEZA SE FUNCIONA AINDA!!!!
 
 # Gabiarra pra nao transformar todos os dados que eu tenho em 1000
-# f =  dados com 500 pontos usados pra simular dados
+# f =  dados com 500 pontos usados pra simular dados (need to cut to 100 points)
 
 f0= [x for x in fft_data0 if len(x)==101]
 f1 = [x for x in fft_data1 if len(x)==101]
 
-# g = dados com pra testar a rede neural
+
+
+# g = dados com pra testar a rede neural - Possivel cortar o array pra ficar com 500 pontos e downscale pra 100
+
 g0 = [x for x in fft_data0 if len(x)==501]
 g1 = [x for x in fft_data1 if len(x)==501]
 
@@ -155,8 +158,8 @@ print('---####################################################---')
 ###### Histogram #####
 # Will have 4 histograms (0,1 and 0,2)
 
-hf0 = np.zeros(101)
-hf1 = np.zeros(101)
+hf0 = np.zeros(int(len(f0)))
+hf1 = np.zeros(int(len(f1)))
 
 for i in range(len(f0)//2):
     hf0 = np.add(f0[2*i+1],hf0)
