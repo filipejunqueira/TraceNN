@@ -2,6 +2,8 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 from Load_Manip_Trace import raw_data, classification
+from Histrogram_Function import downsample
+from sklearn.preprocessing import MinMaxScaler
 import os
 
 
@@ -60,17 +62,17 @@ for i in range(0,N):
 
     if classification[i][1] == 0.0:
         x,y = fft_trace(raw_data[2*i],raw_data[2*i+1])
-        fft_data0.append(classification[i][0])
+        #fft_data0.append(classification[i][0])
         fft_data0.append(x)
         fft_data0.append(y)
     if classification[i][1] == 1.0:
         x,y = fft_trace(raw_data[2*i],raw_data[2*i+1])
-        fft_data1.append(classification[i][0])
+        #fft_data1.append(classification[i][0])
         fft_data1.append(x)
         fft_data1.append(y)
     if classification[i][1] == 2.0:
         x,y = fft_trace(raw_data[2*i],raw_data[2*i+1])
-        fft_data2.append(classification[i][0])
+        #fft_data2.append(classification[i][0])
         fft_data2.append(x)
         fft_data2.append(y)
     if all([classification[i][1] != 0, classification[i][1] != 1,classification[i][1] != 2]):
@@ -125,22 +127,68 @@ size_data0 = len(fft_data0)
 size_data1 = len(fft_data1)
 size_data2 = len(fft_data2)
 
-
-print(str(len(fft_data0)//3) + ' with classification 0 (no manipulation event)')
-print(str(len(fft_data1)//3) + ' with classification 1 (manipulation event detected)')
-print(str(len(fft_data2)//3) + ' with classification 2 (Curve not classified)')
-
-for i in range(size_data0//3):
-    print(len(fft_data0[3*i+1]))
-
-print('\n\n ------------------------------------------------------------------------------')
-
-for i in range(size_data1):
-        print(len(fft_data1[3*i+1]))
+#print(str(len(fft_data0)//3) + ' with classification 0 (no manipulation event)')
+#print(str(len(fft_data1)//3) + ' with classification 1 (manipulation event detected)')
+#print(str(len(fft_data2)//3) + ' with classification 2 (Curve not classified)')
 
 
+# DAQUI PRA BAIXO EU NAO TENHO CERTEZA SE FUNCIONA AINDA!!!!
+
+# Gabiarra pra nao transformar todos os dados que eu tenho em 1000
+# f =  dados com 500 pontos usados pra simular dados
+
+f0= [x for x in fft_data0 if len(x)==101]
+f1 = [x for x in fft_data1 if len(x)==101]
+
+# g = dados com pra testar a rede neural
+g0 = [x for x in fft_data0 if len(x)==501]
+g1 = [x for x in fft_data1 if len(x)==501]
+
+print(len(f0)/2)
+print(len(f1)/2)
+
+print(len(g0)/2)
+print(len(g1)/2)
+
+print('---####################################################---')
 
 ###### Histogram #####
+# Will have 4 histograms (0,1 and 0,2)
+
+hf0 = np.zeros(101)
+hf1 = np.zeros(101)
+
+for i in range(len(f0)//2):
+    hf0 = np.add(f0[2*i+1],hf0)
+
+hf0 = hf0/101*10000000000
+xxx = np.arange(101)
+
+# ------------------------------------------------
+
+for i in range(len(f1)//2):
+    hf1 = np.add(f1[2*i+1],hf1)
+
+hf1 = (hf1/101)*10000000000
+xx = np.arange(101)
+
+plt.figure(figsize=(7,3))
+plt.subplot(121)
+
+plt.plot(xxx,hf0)
+plt.title('FFT')
+plt.xlabel('Frequency ($Hz$)')
+plt.ylabel('Counts')
+plt.ylim(0,1.5)
+
+plt.subplot(122)
+plt.plot(xx,hf1)
+plt.title('FFT')
+plt.xlabel('Frequency ($Hz$)')
+plt.ylabel('Counts')
+plt.ylim(0,1.5)
+plt.tight_layout()
+plt.show()
 
 # To do a histogram I need to sum all the Ys together and divide by the number of
 # if they all have the same size it should be easy
