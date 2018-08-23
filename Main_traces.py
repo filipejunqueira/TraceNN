@@ -8,9 +8,7 @@ import ImportTxt
 #Load_manipulation TraceNN
 #Transform fft
 
-
 #grab f0 and f1
-
 
 # use f0 and f1 as input in a NN
 
@@ -22,4 +20,7 @@ import ImportTxt
 # add simulated curves to r0 and r1
 
 #train neural network with r0 and r1
+
+#Save model in \\Output_Data\\Models
+
 #Test with 20% of data
